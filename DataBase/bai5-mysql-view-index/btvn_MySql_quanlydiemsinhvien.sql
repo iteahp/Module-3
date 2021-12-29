@@ -108,7 +108,8 @@ foreign key (maMH)references monHoc(maMH)
   where sinhvien.gioitinh = 'nu'
   group by khoa.makhoa;
   
-   select tenkhoa,soluong from (soluong_sinhvienNu_moikhoa);
+   select tenkhoa,soluong from (soluong_sinhvienNu_moikhoa)
+   where  soluong>2;
    
   --  Câu22: Lập danh sách sinh viên có học bổng cao nhất
 	select * from sinhvien 
@@ -120,7 +121,8 @@ foreign key (maMH)references monHoc(maMH)
     join monhoc on ketqua.mamh = monhoc.mamh 
     where monhoc.tenmh = 'triet1' ;
     
-    select sinhvien.hoten,monhoc.tenmh,diemthi from sinhvien join ketqua on sinhvien.masv = ketqua.masv 
+    select sinhvien.hoten,monhoc.tenmh,diemthi from sinhvien 
+    join ketqua on sinhvien.masv = ketqua.masv 
     join monhoc on ketqua.mamh = monhoc.mamh 
     where monhoc.tenmh = 'triet1' and diemthi = (select max(diemthi) from danhsachdiemMontriet1);
     
